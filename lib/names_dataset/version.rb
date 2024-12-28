@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
-module NamesDataset
+class NamesDataset
   VERSION = "1.0.0"
 end
