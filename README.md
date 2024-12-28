@@ -111,6 +111,10 @@ nd.last_names
 
 For offline or alternative usage, a link to the raw dataset can be found in the [original Python library](https://github.com/philipperemy/name-dataset/blob/6ae42a6a84a7b6460baa2cbd440f0cdf9fe81752/README.md#full-dataset).
 
+## Ports
+
+- This library is a port of the original Python library [philipperemy/name-dataset](https://github.com/philipperemy/name-dataset).
+
 ## Contributing
 
 We welcome contributions! Feel free to open an issue or submit a pull request on GitHub.
