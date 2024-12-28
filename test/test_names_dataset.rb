@@ -10,21 +10,21 @@ class TestNamesDataset < Minitest::Test
     # Create sample data for first names and last names
     @first_names_data = {
       "John" => {
-        "country" => { "US" => 90 },
-        "gender" => { "M" => 1.0 },
-        "rank" => { "US" => 1 }
+        "country" => {"US" => 90},
+        "gender" => {"M" => 1.0},
+        "rank" => {"US" => 1}
       },
       "Jane" => {
-        "country" => { "US" => 10 },
-        "gender" => { "F" => 1.0 },
-        "rank" => { "US" => 2 }
+        "country" => {"US" => 10},
+        "gender" => {"F" => 1.0},
+        "rank" => {"US" => 2}
       }
     }
     @last_names_data = {
       "Doe" => {
-        "country" => { "US" => 100 },
+        "country" => {"US" => 100},
         "gender" => {},
-        "rank" => { "US" => 1 }
+        "rank" => {"US" => 1}
       }
     }
 

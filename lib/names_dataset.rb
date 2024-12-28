@@ -11,11 +11,11 @@ class NamesDataset
   attr_reader :first_names, :last_names
 
   FIRST_NAMES_ZIP_PATH = File.expand_path("../../data/first_names.zip", __FILE__)
-  LAST_NAMES_ZIP_PATH = File.expand_path("../../data/last_names.zip",  __FILE__)
+  LAST_NAMES_ZIP_PATH = File.expand_path("../../data/last_names.zip", __FILE__)
 
   def initialize(first_names_path: FIRST_NAMES_ZIP_PATH, last_names_path: LAST_NAMES_ZIP_PATH)
     @first_names = load_zipped_json(first_names_path)
-    @last_names  = load_zipped_json(last_names_path)
+    @last_names = load_zipped_json(last_names_path)
   end
 
   def search(name)
@@ -74,7 +74,7 @@ class NamesDataset
       content = entry.get_input_stream.read if entry
     end
     content ? JSON.parse(content) : {}
-  rescue StandardError => e
+  rescue => e
     warn "Failed to load or parse #{zip_path}: #{e.message}"
     {}
   end
@@ -95,16 +95,14 @@ class NamesDataset
 
   def map_country_codes(data)
     data.transform_keys do |alpha2|
-      begin
-        IsoCountryCodes.find(alpha2).name
-      rescue IsoCountryCodes::UnknownCodeError
-        nil
-      end
+      IsoCountryCodes.find(alpha2).name
+    rescue IsoCountryCodes::UnknownCodeError
+      nil
     end.compact
   end
 
   def map_gender(data)
-    gender_map = { "M" => "Male", "F" => "Female" }
+    gender_map = {"M" => "Male", "F" => "Female"}
     data.transform_keys { |key| gender_map[key] }
   end
 
@@ -121,15 +119,15 @@ class NamesDataset
     if gender_data.size == 1
       gender_data.keys.first
     else
-      gender_data["M"] > gender_data["F"] ? "M" : "F"
+      (gender_data["M"] > gender_data["F"]) ? "M" : "F"
     end
   end
 
   def empty_result
-    { first_name: empty_name_metadata, last_name: empty_name_metadata }
+    {first_name: empty_name_metadata, last_name: empty_name_metadata}
   end
 
   def empty_name_metadata
-    { "country" => {}, "gender" => {}, "rank" => {} }
+    {"country" => {}, "gender" => {}, "rank" => {}}
   end
 end
